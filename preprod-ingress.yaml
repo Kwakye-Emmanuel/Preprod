@@ -1,0 +1,19 @@
+  GNU nano 4.8                  05-ingress-test.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: preprod-ingress
+  namespace: preprod
+spec:
+  ingressClassName: preprod
+  rules:
+  - host: cherry.quantumgroupgh.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: preprod
+            port:
+              number: 84
